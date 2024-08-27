@@ -10,7 +10,7 @@ import {
 } from "@remix-run/react";
 import type { FunctionComponent } from "react";
 
-import { getContact, updateContact } from "../data";
+import { ContactRecord, getContact, updateContact } from "../data";
 
 export const action = async ({
     params,
