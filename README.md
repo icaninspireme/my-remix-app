@@ -1,6 +1,15 @@
 # Welcome to Remix!
 
+This is the [Remix Tutorial](https://remix.run/docs/en/main/start/tutorial). 
+
+I made the following extensions to it
+- Added Docker Files to assist in deploying the container.
+- Added a default avatar (nobody wants to see a broken image load).
+- Added consistent application of id generation by applying toLocaleLowerCase to first name.
+
+
 - [Remix Docs](https://remix.run/docs)
+
 
 ## Development
 
@@ -29,6 +38,12 @@ npm start
 Now you'll need to pick a host to deploy it to.
 
 ### DIY
+
+Updated to deploy to Docker Desktop. Run the below command.
+
+```sh
+docker compose up
+```
 
 If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
 
