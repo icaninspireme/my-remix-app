@@ -1,14 +1,13 @@
 import { useEffect }  from "react";
-import { 
+import {
   json,
   LinksFunction,
   LoaderFunctionArgs,
   redirect, 
 } from "@remix-run/node";
-  
+
 import {
   Form,
-  Link,
   Links,
   Meta,
   NavLink,
@@ -52,12 +51,12 @@ export default function App() {
   const searching = navigation.location &&
     new URLSearchParams(navigation.location.search).has("q");
 
-  useEffect(() => { 
-    const searchField = document.getElementById("q");
-    if (searchField instanceof HTMLInputElement) {
-      searchField.value = q || "";
-    }
-  });
+    useEffect(() => {
+      const searchField = document.getElementById("q");
+      if (searchField instanceof HTMLInputElement) {
+        searchField.value = q || "";
+      }
+    }, [q]);
 
   return (
     <html lang="en">
@@ -71,8 +70,8 @@ export default function App() {
         <div id="sidebar">
           <h1>Remix Contacts</h1>
           <div>
-            <Form 
-            id="search-form" 
+            <Form
+            id="search-form"
             onChange={(event) => {
               const isFirstSearch = q === null;
               submit(event.currentTarget, {
@@ -109,7 +108,6 @@ export default function App() {
                         : ""}
                         to={`contacts/${contact.id}`}
                     >
-                    <Link to={`contacts/${contact.id}`}>
                       {contact.first || contact.last ? (
                         <>
                           {contact.first} {contact.last}
@@ -120,7 +118,6 @@ export default function App() {
                       {contact.favorite ? (
                         <span>★</span>
                       ) : null}
-                    </Link>
                     </NavLink>
                   </li>
                 ))}
@@ -132,15 +129,16 @@ export default function App() {
             )}
           </nav>
         </div>
-        <div 
+        <div
           className={
             navigation.state === "loading" && !searching
-            ? "loading" 
+            ? "loading"
             : ""
           }
         id="detail">
           <Outlet />
         </div>
+        
         <ScrollRestoration />
         <Scripts />
       </body>
